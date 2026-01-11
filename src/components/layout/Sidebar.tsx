@@ -43,7 +43,7 @@ export function Sidebar() {
         <AutoDCLogo size="md" showText />
       </div>
 
-      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+      <nav className="h-full overflow-hidden">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
