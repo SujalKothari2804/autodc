@@ -6,153 +6,65 @@
 
 @layer base {
   :root {
-    /* Base tokens - shared across themes */
     --radius: 0.5rem;
-    
-    /* Default to OPS theme */
-    --background: 220 20% 10%;
-    --foreground: 210 20% 95%;
-
-    --card: 220 18% 13%;
-    --card-foreground: 210 20% 95%;
-
-    --popover: 220 18% 13%;
-    --popover-foreground: 210 20% 95%;
-
-    --primary: 180 100% 50%;
-    --primary-foreground: 220 20% 10%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 95%;
-
-    --muted: 220 15% 18%;
-    --muted-foreground: 215 15% 55%;
-
-    --accent: 220 15% 22%;
-    --accent-foreground: 210 20% 95%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 220 20% 10%;
-
-    --success: 160 84% 39%;
-    --success-foreground: 210 20% 98%;
-
-    --info: 199 89% 48%;
-    --info-foreground: 210 20% 98%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 180 100% 50%;
-
-    --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 180 100% 50%;
-    --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 180 100% 50%;
   }
 
-  /* OPS MODE - Neon Cyan / Teal - Operations, Monitoring, Mission-Critical */
   .theme-ops {
     --background: 220 20% 10%;
     --foreground: 210 20% 95%;
-
     --card: 220 18% 13%;
     --card-foreground: 210 20% 95%;
-
     --popover: 220 18% 13%;
     --popover-foreground: 210 20% 95%;
-
     --primary: 180 100% 50%;
     --primary-foreground: 220 20% 10%;
-
     --secondary: 220 15% 18%;
     --secondary-foreground: 210 20% 95%;
-
     --muted: 220 15% 18%;
     --muted-foreground: 215 15% 55%;
-
     --accent: 220 15% 22%;
     --accent-foreground: 210 20% 95%;
-
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
-
     --warning: 38 92% 50%;
-    --warning-foreground: 220 20% 10%;
-
     --success: 160 84% 39%;
-    --success-foreground: 210 20% 98%;
-
     --info: 199 89% 48%;
-    --info-foreground: 210 20% 98%;
-
     --border: 220 15% 20%;
     --input: 220 15% 20%;
     --ring: 180 100% 50%;
-
     --sidebar-background: 220 20% 8%;
     --sidebar-foreground: 210 20% 85%;
     --sidebar-primary: 180 100% 50%;
-    --sidebar-primary-foreground: 220 20% 10%;
     --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 20% 95%;
     --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 180 100% 50%;
   }
 
-  /* BIZ MODE - Enterprise Blue - Reports, Analytics, Executive */
   .theme-biz {
-    --background: 222 25% 10%;
-    --foreground: 210 20% 95%;
-
-    --card: 222 22% 13%;
-    --card-foreground: 210 20% 95%;
-
-    --popover: 222 22% 13%;
-    --popover-foreground: 210 20% 95%;
-
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
     --primary: 217 91% 60%;
-    --primary-foreground: 222 25% 10%;
-
-    --secondary: 222 18% 18%;
-    --secondary-foreground: 210 20% 95%;
-
-    --muted: 222 18% 18%;
-    --muted-foreground: 215 15% 55%;
-
-    --accent: 222 18% 22%;
-    --accent-foreground: 210 20% 95%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
-
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
     --warning: 38 92% 50%;
-    --warning-foreground: 222 25% 10%;
-
-    --success: 160 84% 39%;
-    --success-foreground: 210 20% 98%;
-
+    --success: 142 70% 45%;
     --info: 217 91% 60%;
-    --info-foreground: 210 20% 98%;
-
-    --border: 222 18% 20%;
-    --input: 222 18% 20%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 217 91% 60%;
-
-    --sidebar-background: 222 25% 8%;
-    --sidebar-foreground: 210 20% 85%;
+    --sidebar-background: 220 20% 98%;
+    --sidebar-foreground: 222 47% 11%;
     --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 222 25% 10%;
-    --sidebar-accent: 222 18% 15%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 222 18% 15%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-border: 220 13% 91%;
   }
 }
 
@@ -168,26 +80,6 @@
 }
 
 @layer components {
-  .kpi-value {
-    @apply text-4xl font-bold text-primary;
-  }
-
-  .kpi-label {
-    @apply text-sm text-muted-foreground uppercase tracking-wider;
-  }
-
-  .status-active {
-    @apply text-primary;
-  }
-
-  .status-warning {
-    @apply text-warning;
-  }
-
-  .status-danger {
-    @apply text-destructive;
-  }
-
   .sidebar-link {
     @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors;
   }
@@ -200,16 +92,12 @@
     @apply text-sidebar-foreground hover:bg-sidebar-accent hover:text-foreground;
   }
 
-  .data-table {
-    @apply w-full text-sm;
+  .kpi-value {
+    @apply text-4xl font-bold text-primary;
   }
 
-  .data-table th {
-    @apply text-left text-muted-foreground font-medium py-3 px-4 border-b border-border;
-  }
-
-  .data-table td {
-    @apply py-3 px-4 border-b border-border;
+  .kpi-label {
+    @apply text-sm text-muted-foreground uppercase tracking-wider;
   }
 
   .badge-active {
@@ -223,69 +111,14 @@
   .badge-danger {
     @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-destructive/10 text-destructive;
   }
-
-  .badge-muted {
-    @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground;
-  }
-
-  .badge-info {
-    @apply inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-info/10 text-info;
-  }
 }
 
-/* Leaflet map styles */
 .leaflet-container {
   background: hsl(var(--background));
-  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .leaflet-control-zoom a {
   background: hsl(var(--card)) !important;
   color: hsl(var(--foreground)) !important;
   border: 1px solid hsl(var(--border)) !important;
-}
-
-.leaflet-control-zoom a:hover {
-  background: hsl(var(--secondary)) !important;
-}
-
-.leaflet-popup-content-wrapper {
-  background: hsl(var(--card));
-  color: hsl(var(--foreground));
-  border-radius: 0.5rem;
-}
-
-.leaflet-popup-tip {
-  background: hsl(var(--card));
-}
-
-.drone-marker {
-  background: hsl(var(--primary));
-  border: 2px solid hsl(var(--primary) / 0.8);
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.drone-marker-pulse {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: hsl(var(--primary) / 0.3);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
 }
