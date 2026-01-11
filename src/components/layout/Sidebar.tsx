@@ -11,6 +11,8 @@ import {
   LogOut,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { AutoDCLogo } from '@/components/brand/AutoDCLogo';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { toast } from 'sonner';
 
 const navItems = [
@@ -38,15 +40,7 @@ export function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col z-50">
       <div className="p-6 border-b border-sidebar-border">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-            <Plane className="w-6 h-6 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="text-lg font-bold text-foreground">DroneOps</h1>
-            <p className="text-xs text-muted-foreground">Enterprise Platform</p>
-          </div>
-        </div>
+        <AutoDCLogo size="md" showText />
       </div>
 
       <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -65,7 +59,9 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-sidebar-border space-y-3">
+      <div className="p-4 border-t border-sidebar-border space-y-4">
+        <ThemeSwitcher variant="toggle" className="w-full justify-center" />
+        
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
             <span className="text-sm font-medium text-primary">

@@ -18,25 +18,25 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// Mock user database
+// Mock user database - AutoDC branded
 const MOCK_USERS: { email: string; password: string; user: AuthUser }[] = [
   {
-    email: 'admin@droneops.com',
+    email: 'admin@autodc.com',
     password: 'admin123',
     user: {
       id: 'user-001',
       name: 'John Smith',
-      email: 'admin@droneops.com',
+      email: 'admin@autodc.com',
       role: 'admin',
     },
   },
   {
-    email: 'operator@droneops.com',
+    email: 'operator@autodc.com',
     password: 'operator123',
     user: {
       id: 'user-002',
       name: 'Sarah Johnson',
-      email: 'operator@droneops.com',
+      email: 'operator@autodc.com',
       role: 'operator',
     },
   },
@@ -48,17 +48,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Check for stored session on mount
-    const storedSession = localStorage.getItem('droneops_session');
+    const storedSession = localStorage.getItem('autodc_session');
     if (storedSession) {
       try {
         const session = JSON.parse(storedSession);
         if (session.expiresAt > Date.now()) {
           setUser(session.user);
         } else {
-          localStorage.removeItem('droneops_session');
+          localStorage.removeItem('autodc_session');
         }
       } catch {
-        localStorage.removeItem('droneops_session');
+        localStorage.removeItem('autodc_session');
       }
     }
     setIsLoading(false);
@@ -80,7 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           user: foundUser.user,
           expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days
         };
-        localStorage.setItem('droneops_session', JSON.stringify(session));
+        localStorage.setItem('autodc_session', JSON.stringify(session));
       }
       
       return true;
@@ -114,14 +114,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user: newUser,
       expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
     };
-    localStorage.setItem('droneops_session', JSON.stringify(session));
+    localStorage.setItem('autodc_session', JSON.stringify(session));
 
     return true;
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('droneops_session');
+    localStorage.removeItem('autodc_session');
   };
 
   const forgotPassword = async (email: string): Promise<boolean> => {
