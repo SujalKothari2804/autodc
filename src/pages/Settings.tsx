@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { useApp } from '@/context/AppContext';
+import { useTheme } from '@/context/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -20,12 +21,14 @@ import {
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
-import { Plus, Pencil, Trash2, Key, Users, MapPin, Settings as SettingsIcon } from 'lucide-react';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { Plus, Pencil, Trash2, Key, Users, MapPin, Settings as SettingsIcon, Palette, Upload } from 'lucide-react';
 import { User, Site } from '@/data/types';
 import { toast } from 'sonner';
 
 export default function Settings() {
   const { state, dispatch } = useApp();
+  const { theme } = useTheme();
   
   // User Management
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
@@ -172,8 +175,16 @@ export default function Settings() {
           <p className="text-muted-foreground">Manage users, sites, and system configuration</p>
         </div>
 
-        <Tabs defaultValue="users" className="space-y-6">
+        <Tabs defaultValue="general" className="space-y-6">
           <TabsList className="bg-secondary">
+            <TabsTrigger value="general" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <SettingsIcon className="w-4 h-4 mr-2" />
+              General
+            </TabsTrigger>
+            <TabsTrigger value="appearance" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Palette className="w-4 h-4 mr-2" />
+              Appearance
+            </TabsTrigger>
             <TabsTrigger value="users" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Users className="w-4 h-4 mr-2" />
               Users
@@ -186,11 +197,106 @@ export default function Settings() {
               <Key className="w-4 h-4 mr-2" />
               API Keys
             </TabsTrigger>
-            <TabsTrigger value="general" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-              <SettingsIcon className="w-4 h-4 mr-2" />
-              General
-            </TabsTrigger>
           </TabsList>
+
+          {/* General Tab */}
+          <TabsContent value="general">
+            <div className="bg-card border border-border rounded-lg p-6 max-w-xl space-y-6">
+              <h3 className="font-semibold text-foreground">System Preferences</h3>
+              
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-foreground">Notifications</p>
+                  <p className="text-sm text-muted-foreground">Receive alerts for mission events</p>
+                </div>
+                <Switch
+                  checked={state.settings.notificationsEnabled}
+                  onCheckedChange={(checked) => 
+                    dispatch({ type: 'UPDATE_SETTINGS', payload: { notificationsEnabled: checked } })
+                  }
+                />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium text-foreground">Auto-Schedule</p>
+                  <p className="text-sm text-muted-foreground">Automatically schedule routine missions</p>
+                </div>
+                <Switch
+                  checked={state.settings.autoScheduleEnabled}
+                  onCheckedChange={(checked) => 
+                    dispatch({ type: 'UPDATE_SETTINGS', payload: { autoScheduleEnabled: checked } })
+                  }
+                />
+              </div>
+            </div>
+          </TabsContent>
+
+          {/* Appearance Tab */}
+          <TabsContent value="appearance">
+            <div className="space-y-6 max-w-xl">
+              <div className="bg-card border border-border rounded-lg p-6 space-y-6">
+                <h3 className="font-semibold text-foreground">Theme</h3>
+                <p className="text-sm text-muted-foreground">
+                  Choose between OPS Mode for operations and monitoring, or BIZ Mode for reports and analytics.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium text-foreground">Current Mode</p>
+                      <p className="text-sm text-muted-foreground">
+                        {theme === 'ops' ? 'Operations Mode - Neon Cyan' : 'Business Mode - Enterprise Blue'}
+                      </p>
+                    </div>
+                    <ThemeSwitcher variant="toggle" />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-4 h-4 rounded-full" style={{ background: 'hsl(180 100% 50%)' }} />
+                        <p className="font-medium text-foreground text-sm">OPS Mode</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">High-contrast neon cyan for mission-critical operations, monitoring, and live tracking.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-4 h-4 rounded-full" style={{ background: 'hsl(217 91% 60%)' }} />
+                        <p className="font-medium text-foreground text-sm">BIZ Mode</p>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Corporate enterprise blue for reports, analytics, and executive dashboards.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-6 space-y-6">
+                <h3 className="font-semibold text-foreground">Branding</h3>
+                <p className="text-sm text-muted-foreground">
+                  Customize your AutoDC instance with your organization's logo.
+                </p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <Label>Logo Upload</Label>
+                    <p className="text-xs text-muted-foreground mb-3">Upload a custom logo to replace the default AutoDC logo.</p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-lg border-2 border-dashed border-border flex items-center justify-center bg-secondary/30">
+                        <Upload className="w-6 h-6 text-muted-foreground" />
+                      </div>
+                      <div className="space-y-2">
+                        <Button variant="secondary" size="sm" disabled>
+                          Upload Logo
+                        </Button>
+                        <p className="text-xs text-muted-foreground">PNG, SVG up to 2MB (Coming soon)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
 
           {/* Users Tab */}
           <TabsContent value="users">
@@ -311,39 +417,6 @@ export default function Settings() {
                     API key is configured
                   </p>
                 )}
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* General Tab */}
-          <TabsContent value="general">
-            <div className="bg-card border border-border rounded-lg p-6 max-w-xl space-y-6">
-              <h3 className="font-semibold text-foreground">System Preferences</h3>
-              
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-foreground">Notifications</p>
-                  <p className="text-sm text-muted-foreground">Receive alerts for mission events</p>
-                </div>
-                <Switch
-                  checked={state.settings.notificationsEnabled}
-                  onCheckedChange={(checked) => 
-                    dispatch({ type: 'UPDATE_SETTINGS', payload: { notificationsEnabled: checked } })
-                  }
-                />
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-foreground">Auto-Schedule</p>
-                  <p className="text-sm text-muted-foreground">Automatically schedule routine missions</p>
-                </div>
-                <Switch
-                  checked={state.settings.autoScheduleEnabled}
-                  onCheckedChange={(checked) => 
-                    dispatch({ type: 'UPDATE_SETTINGS', payload: { autoScheduleEnabled: checked } })
-                  }
-                />
               </div>
             </div>
           </TabsContent>

@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Plane, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { AutoDCLogo } from '@/components/brand/AutoDCLogo';
 import { toast } from 'sonner';
 
 export default function Login() {
@@ -52,23 +53,15 @@ export default function Login() {
     <div className="min-h-screen bg-background flex">
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-card border-r border-border flex-col justify-between p-12">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-            <Plane className="w-7 h-7 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">DroneOps</h1>
-            <p className="text-sm text-muted-foreground">Enterprise Platform</p>
-          </div>
-        </div>
+        <AutoDCLogo size="lg" showText />
 
         <div className="space-y-6">
           <h2 className="text-4xl font-bold text-foreground">
-            Manage your drone fleet with precision
+            Command your drone fleet with precision
           </h2>
           <p className="text-lg text-muted-foreground">
             Real-time monitoring, intelligent scheduling, and comprehensive analytics 
-            for enterprise drone operations.
+            for enterprise autonomous drone operations.
           </p>
           <div className="flex items-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -81,13 +74,13 @@ export default function Login() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary" />
-              <span>Fleet Management</span>
+              <span>Fleet Command</span>
             </div>
           </div>
         </div>
 
         <p className="text-sm text-muted-foreground">
-          © 2026 DroneOps. All rights reserved.
+          © 2026 AutoDC. All rights reserved.
         </p>
       </div>
 
@@ -95,16 +88,22 @@ export default function Login() {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex items-center justify-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <Plane className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <h1 className="text-xl font-bold text-foreground">DroneOps</h1>
+          <div className="lg:hidden flex flex-col items-center mb-8">
+            <AutoDCLogo size="xl" />
+            <h1 className="text-2xl font-bold text-foreground mt-4">AutoDC</h1>
+            <p className="text-sm text-muted-foreground">Enterprise Autonomous Command</p>
           </div>
 
-          <div className="text-center lg:text-left">
-            <h2 className="text-2xl font-bold text-foreground">Welcome back</h2>
-            <p className="text-muted-foreground mt-2">Sign in to your account</p>
+          {/* Desktop: Centered Logo */}
+          <div className="hidden lg:flex flex-col items-center mb-8">
+            <AutoDCLogo size="xl" />
+            <h1 className="text-2xl font-bold text-foreground mt-4">AutoDC</h1>
+            <p className="text-sm text-muted-foreground">Enterprise Autonomous Drone Command</p>
+          </div>
+
+          <div className="text-center">
+            <h2 className="text-xl font-bold text-foreground">Welcome back</h2>
+            <p className="text-muted-foreground mt-1">Sign in to your command center</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -190,12 +189,12 @@ export default function Login() {
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div className="p-3 rounded-lg bg-secondary/50">
                 <p className="font-medium text-foreground">Admin</p>
-                <p className="text-muted-foreground">admin@droneops.com</p>
+                <p className="text-muted-foreground">admin@autodc.com</p>
                 <p className="text-muted-foreground">admin123</p>
               </div>
               <div className="p-3 rounded-lg bg-secondary/50">
                 <p className="font-medium text-foreground">Operator</p>
-                <p className="text-muted-foreground">operator@droneops.com</p>
+                <p className="text-muted-foreground">operator@autodc.com</p>
                 <p className="text-muted-foreground">operator123</p>
               </div>
             </div>

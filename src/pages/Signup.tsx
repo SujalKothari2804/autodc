@@ -4,7 +4,8 @@ import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Plane, Eye, EyeOff, AlertCircle, Check } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle, Check } from 'lucide-react';
+import { AutoDCLogo } from '@/components/brand/AutoDCLogo';
 import { toast } from 'sonner';
 
 export default function Signup() {
@@ -68,22 +69,14 @@ export default function Signup() {
     <div className="min-h-screen bg-background flex">
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-card border-r border-border flex-col justify-between p-12">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-            <Plane className="w-7 h-7 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">DroneOps</h1>
-            <p className="text-sm text-muted-foreground">Enterprise Platform</p>
-          </div>
-        </div>
+        <AutoDCLogo size="lg" showText />
 
         <div className="space-y-6">
           <h2 className="text-4xl font-bold text-foreground">
-            Join the future of drone operations
+            Join the future of autonomous operations
           </h2>
           <p className="text-lg text-muted-foreground">
-            Get started with enterprise-grade drone management. Real-time monitoring, 
+            Get started with enterprise-grade autonomous command. Real-time monitoring, 
             intelligent scheduling, and comprehensive analytics.
           </p>
           <div className="space-y-4">
@@ -118,7 +111,7 @@ export default function Signup() {
         </div>
 
         <p className="text-sm text-muted-foreground">
-          © 2026 DroneOps. All rights reserved.
+          © 2026 AutoDC. All rights reserved.
         </p>
       </div>
 
@@ -126,16 +119,15 @@ export default function Signup() {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex items-center justify-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <Plane className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <h1 className="text-xl font-bold text-foreground">DroneOps</h1>
+          <div className="lg:hidden flex flex-col items-center mb-8">
+            <AutoDCLogo size="xl" />
+            <h1 className="text-2xl font-bold text-foreground mt-4">AutoDC</h1>
+            <p className="text-sm text-muted-foreground">Autonomous Command Platform</p>
           </div>
 
           <div className="text-center lg:text-left">
             <h2 className="text-2xl font-bold text-foreground">Create an account</h2>
-            <p className="text-muted-foreground mt-2">Get started with DroneOps</p>
+            <p className="text-muted-foreground mt-2">Get started with AutoDC</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
