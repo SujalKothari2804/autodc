@@ -1,73 +1,9 @@
-# Welcome to your Lovable project
+AutoDC is an enterprise-grade autonomous drone command and control platform designed to simulate how modern mission-critical drone operations centers work. The system provides a unified interface for monitoring live drone activity on an interactive map, managing fleets, creating and controlling missions, scheduling operations, and reviewing operational analytics. It is built to reflect the workflows, UI patterns, and system thinking used in real industrial, defense, and large-scale enterprise operations environments.
 
-## Project info
+The platform focuses on real operational behavior rather than just visual UI. Users can view and track multiple drones in real time, click on any drone to inspect telemetry such as battery, speed, altitude, and current mission, manage drone inventory and health, create patrol and inspection missions, schedule missions using a calendar-based interface, and monitor mission progress from a centralized command view. The system also includes reporting and analytics dashboards that present KPIs, trends, and operational summaries using realistic mock data.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+AutoDC is designed as a future-ready SaaS platform. While the current version uses simulated data and local state, the architecture is prepared for real backend integration using services such as Supabase or any real-time telemetry pipeline. An AI Intelligence section is included as a structural placeholder for future AI-generated reports, mission analysis, and predictive insights, and the UI already supports API key configuration for this future integration.
 
-## How can I edit this code?
+The product includes a dual-theme system: an OPS mode optimized for live operations with high-contrast neon accents for mission-critical monitoring, and a BIZ mode designed for calmer, executive-level review and management. The entire application is built with a professional, enterprise-grade design philosophy, avoiding demo-style UI and focusing instead on realistic workflows, clarity, and scalability.
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+AutoDC is intended as a product-level demonstration of system design, UI/UX architecture, and operational software thinking. It is suitable for use as a portfolio project, product case study, or technical demonstration for roles involving frontend engineering, product engineering, or full-stack system design. This project is a simulation and does not control real drones.
