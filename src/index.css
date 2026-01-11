@@ -122,3 +122,46 @@
   color: hsl(var(--foreground)) !important;
   border: 1px solid hsl(var(--border)) !important;
 }
+
+.drone-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.drone-marker-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  animation: drone-pulse 2s infinite;
+}
+
+.theme-ops .drone-marker {
+  background: hsl(180 100% 50%);
+  border: 2px solid hsl(180 100% 50% / 0.9);
+}
+
+.theme-ops .drone-marker-pulse {
+  background: hsl(180 100% 50% / 0.35);
+}
+
+.theme-biz .drone-marker {
+  background: hsl(217 91% 60%);
+  border: 2px solid hsl(217 91% 60% / 0.9);
+}
+
+.theme-biz .drone-marker-pulse {
+  background: hsl(217 91% 60% / 0.35);
+}
+
+@keyframes drone-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
