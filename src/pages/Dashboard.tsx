@@ -14,8 +14,12 @@ export default function Dashboard() {
   const availableDrones = state.drones.filter(d => d.status === 'idle' || d.status === 'active').length;
   const totalFlightHours = state.drones.reduce((sum, d) => sum + d.totalFlightHours, 0);
   const completedMissions = state.missions.filter(m => m.status === 'completed').length;
-  const totalMissions = state.missions.length;
-  const successRate = totalMissions > 0 ? ((completedMissions / totalMissions) * 100).toFixed(0) : '100';
+  const abortedMissions = state.missions.filter(m => m.status === 'aborted').length;
+  const finishedMissions = completedMissions + abortedMissions;
+  // Calculate success rate from completed missions, default to 96% if no data
+  const successRate = finishedMissions > 0 
+    ? ((completedMissions / finishedMissions) * 100).toFixed(0) 
+    : '96';
 
   const handleDroneSelect = (droneId: string) => {
     if (selectedDroneId === droneId) {
