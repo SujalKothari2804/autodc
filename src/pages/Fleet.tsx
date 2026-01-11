@@ -10,6 +10,16 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/ui/dialog';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -27,6 +37,8 @@ export default function Fleet() {
   const { state, dispatch } = useApp();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [deletingDroneId, setDeletingDroneId] = useState<string | null>(null);
   const [editingDrone, setEditingDrone] = useState<Drone | null>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -77,9 +89,18 @@ export default function Fleet() {
     toast.success('Drone updated successfully');
   };
 
-  const handleDeleteDrone = (droneId: string) => {
-    dispatch({ type: 'DELETE_DRONE', payload: droneId });
-    toast.success('Drone removed successfully');
+  const handleDeleteClick = (droneId: string) => {
+    setDeletingDroneId(droneId);
+    setIsDeleteDialogOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (deletingDroneId) {
+      dispatch({ type: 'DELETE_DRONE', payload: deletingDroneId });
+      toast.success('Drone removed successfully');
+    }
+    setIsDeleteDialogOpen(false);
+    setDeletingDroneId(null);
   };
 
   const openEditModal = (drone: Drone) => {
@@ -101,6 +122,8 @@ export default function Fleet() {
     };
     return <span className={styles[status]}>{status.charAt(0).toUpperCase() + status.slice(1)}</span>;
   };
+
+  const deletingDrone = state.drones.find(d => d.id === deletingDroneId);
 
   return (
     <DashboardLayout>
@@ -171,7 +194,7 @@ export default function Fleet() {
                   <Button
                     variant="destructive"
                     size="sm"
-                    onClick={() => handleDeleteDrone(drone.id)}
+                    onClick={() => handleDeleteClick(drone.id)}
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
@@ -280,6 +303,24 @@ export default function Fleet() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+
+        {/* Delete Confirmation Dialog */}
+        <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete Drone</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to delete {deletingDrone?.name}? This action cannot be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleConfirmDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </DashboardLayout>
   );

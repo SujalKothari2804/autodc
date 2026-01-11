@@ -122,13 +122,19 @@ export default function Missions() {
   };
 
   const getTypeBadge = (type: Mission['type']) => {
+    const styles = {
+      patrol: 'badge-active',
+      inspection: 'inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-violet-500/10 text-violet-400',
+      survey: 'badge-muted',
+      emergency: 'badge-danger',
+    };
     const labels = {
       patrol: 'Patrol',
       inspection: 'Inspection',
       survey: 'Survey',
       emergency: 'Emergency',
     };
-    return <span className="badge-muted">{labels[type]}</span>;
+    return <span className={styles[type]}>{labels[type]}</span>;
   };
 
   const availableDrones = state.drones.filter(d => d.status === 'idle');
